@@ -23,7 +23,7 @@ app.use((req, res, next) => {
 const userState = [];
 
 app.get("/", async (request, response) => {
-  response.status(200).send(JSON.parse('Server is runnig on port 3000')).end();
+  response.status(200).end();
 });
 
 app.post("/new-user", async (request, response) => {
