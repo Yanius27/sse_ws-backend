@@ -1,5 +1,5 @@
-import http from "http";
-import express from "express";
+import http, { request } from "http";
+import express, { response } from "express";
 import WebSocket, { WebSocketServer } from "ws";
 import cors from "cors";
 import bodyParser from "body-parser";
@@ -21,6 +21,12 @@ app.use((req, res, next) => {
 });
 
 const userState = [];
+
+app.get("/", async (request, response) => {
+  response.body = 'Server is runnig on port 3000';
+  response.end();
+});
+
 app.post("/new-user", async (request, response) => {
   console.log(request.body);
   if (Object.keys(request.body).length === 0) {
