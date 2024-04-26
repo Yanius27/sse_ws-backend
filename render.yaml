@@ -1,0 +1,5 @@
+services:
+  - name: ws-server
+    startCommand: npm start
+    env:
+      PORT: 3000
