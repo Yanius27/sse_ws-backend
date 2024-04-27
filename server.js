@@ -53,6 +53,10 @@ app.post("/new-user", async (request, response) => {
   }
 });
 
+app.get("/", (req, res) => {
+  res.send("Server is runnig!"); 
+});
+
 const server = http.createServer(app);
 const wsServer = new WebSocketServer({ server });
 
@@ -92,7 +96,7 @@ wsServer.on("connection", (ws) => {
     .forEach((o) => o.send(JSON.stringify(userState)));
 });
 
-const port = process.env.PORT || 3000;
+const adress = process.env.PORT || 3000;
 
 const bootstrap = async () => {
   try {
