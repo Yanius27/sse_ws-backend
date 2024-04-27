@@ -8,6 +8,7 @@ import bodyParser from "body-parser";
 import * as crypto from "crypto";
 
 const serverUrl = process.env.SERVER_URL;
+const PORT = process.env.PORT || 3000;
 
 const app = express();
 
@@ -114,8 +115,8 @@ wsServer.on("connection", (ws) => {
 
 const bootstrap = async () => {
   try {
-    server.listen(serverUrl, () =>
-      console.log(`Server has been started on ${serverUrl}`)
+    server.listen(PORT, () =>
+      console.log(`Server has been started on ${PORT}`)
     );
   } catch (error) {
     console.error(error);
