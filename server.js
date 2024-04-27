@@ -53,8 +53,10 @@ app.post("/new-user", async (request, response) => {
   }
 });
 
-app.get("/", (req, res) => {
-  res.send("Server is runnig!"); 
+app.use("/", (req, res) => {
+  if (req.method === 'GET' && req.path === '/') {
+    return res.end();
+  }
 });
 
 const server = http.createServer(app);
