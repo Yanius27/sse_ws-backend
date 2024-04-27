@@ -22,10 +22,6 @@ app.use((req, res, next) => {
 
 const userState = [];
 
-app.get("/", async (request, response) => {
-  response.status(200).end();
-});
-
 app.post("/new-user", async (request, response) => {
   console.log(request.body);
   if (Object.keys(request.body).length === 0) {
