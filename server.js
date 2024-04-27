@@ -22,11 +22,12 @@ app.use(
 );
 
 app.get("/api/server-url", (req, res) => {
+  serverUrl += `:${PORT}`;
   res.json({ serverUrl });
 });
 
 app.get("/api/websocket-url", (req, res) => {
-  const wsURL = serverUrl.replace('https', 'wss') + '/ws';
+  const wsURL = serverUrl.replace('https', 'wss') + `:${PORT}` + '/ws';
   res.json({ wsURL });
 })
 
