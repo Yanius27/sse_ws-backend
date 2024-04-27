@@ -54,7 +54,7 @@ app.post("/new-user", async (request, response) => {
 });
 
 app.get("/", (req, res) => {
-  res.send(JSON.parse("Server is runnig!")); 
+  res.send("Server is runnig!"); 
 });
 
 const server = http.createServer(app);
