@@ -21,19 +21,19 @@ app.use(
   })
 );
 
-app.use((req, res, next) => {
-  res.setHeader("Content-Type", "application/json");
-  next();
-});
-
 app.get("/api/server-url", (req, res) => {
   res.json({ serverUrl });
 });
 
 app.get("/api/websocket-url", (req, res) => {
-  const wsURL = serverUrl.replace('https', 'wss') + 'ws';
+  const wsURL = serverUrl.replace('https', 'wss') + '/ws';
   res.json({ wsURL });
 })
+
+app.use((req, res, next) => {
+  res.setHeader("Content-Type", "application/json");
+  next();
+});
 
 const userState = [];
 
