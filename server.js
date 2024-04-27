@@ -10,7 +10,7 @@ import * as crypto from "crypto";
 const serverUrl = process.env.SERVER_URL;
 const PORT = process.env.PORT || 3000;
 
-console.log("SERVER_URL:", process.env.RENDER_SERVER_URL);
+console.log("SERVER_URL:", process.env.RENDER_EXTERNAL_URL);
 console.log("PORT:", process.env.PORT);
 
 const app = express();
