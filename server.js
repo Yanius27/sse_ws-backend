@@ -1,9 +1,13 @@
+import dotenv from "dotenv";
+dotenv.config();
 import http, { request } from "http";
 import express, { response } from "express";
 import WebSocket, { WebSocketServer } from "ws";
 import cors from "cors";
 import bodyParser from "body-parser";
 import * as crypto from "crypto";
+
+const serverUrl = process.env.SERVER_URL;
 
 const app = express();
 
@@ -54,6 +58,7 @@ app.post("/new-user", async (request, response) => {
 });
 
 app.use("/", (req, res) => {
+  res.render("index", { serverUrl });
   if (req.method === 'GET' && req.path === '/') {
     return res.end();
   }
@@ -98,12 +103,10 @@ wsServer.on("connection", (ws) => {
     .forEach((o) => o.send(JSON.stringify(userState)));
 });
 
-const port = process.env.PORT || 3000;
-
 const bootstrap = async () => {
   try {
-    server.listen(port, () =>
-      console.log(`Server has been started on http://localhost:${port}`)
+    server.listen(serverUrl, () =>
+      console.log(`Server has been started on ${serverUrl}`)
     );
   } catch (error) {
     console.error(error);
