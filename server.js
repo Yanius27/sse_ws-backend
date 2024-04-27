@@ -1,5 +1,3 @@
-import dotenv from "dotenv";
-dotenv.config();
 import http, { request } from "http";
 import express, { response } from "express";
 import WebSocket, { WebSocketServer } from "ws";
@@ -7,7 +5,6 @@ import cors from "cors";
 import bodyParser from "body-parser";
 import * as crypto from "crypto";
 
-const serverUrl = process.env.RENDER_EXTERNAL_URL;
 const PORT = process.env.PORT || 3000;
 
 const app = express();
@@ -20,16 +17,6 @@ app.use(
     },
   })
 );
-
-app.get("/api/server-url", (req, res) => {
-  const actualUrl = `${serverUrl}:${PORT}`;
-  res.json({ actualUrl });
-});
-
-app.get("/api/websocket-url", (req, res) => {
-  const wsUrl = serverUrl.replace('https', 'wss') + `:${PORT}` + '/ws';
-  res.json({ wsUrl });
-})
 
 app.use((req, res, next) => {
   res.setHeader("Content-Type", "application/json");
