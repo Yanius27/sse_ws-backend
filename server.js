@@ -7,11 +7,8 @@ import cors from "cors";
 import bodyParser from "body-parser";
 import * as crypto from "crypto";
 
-const serverUrl = process.env.SERVER_URL;
+const serverUrl = process.env.RENDER_EXTERNAL_URL;
 const PORT = process.env.PORT || 3000;
-
-console.log("SERVER_URL:", process.env.RENDER_EXTERNAL_URL);
-console.log("PORT:", process.env.PORT);
 
 const app = express();
 
@@ -25,8 +22,7 @@ app.use(
 );
 
 app.get("/api/server-url", (req, res) => {
-  serverUrl += `:${PORT}`;
-  res.json({ serverUrl });
+  res.json({ serverUrl: `${serverUrl}:${PORT}` });
 });
 
 app.get("/api/websocket-url", (req, res) => {
