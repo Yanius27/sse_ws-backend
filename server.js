@@ -25,7 +25,7 @@ app.use((req, res, next) => {
 
 const userState = [];
 
-app.post("https://yanius27.github.io/sse_ws-frontend:3000/new-user", async (request, response) => {
+app.post("/new-user", async (request, response) => {
   console.log(request.body);
   if (Object.keys(request.body).length === 0) {
     const result = {
@@ -56,7 +56,7 @@ app.post("https://yanius27.github.io/sse_ws-frontend:3000/new-user", async (requ
   }
 });
 
-app.use("https://yanius27.github.io/sse_ws-frontend:3000", (req, res) => {
+app.use("/", (req, res) => {
   if (req.method === 'GET' && req.path === '/') {
     return res.end();
   }
