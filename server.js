@@ -96,7 +96,7 @@ wsServer.on("connection", (ws) => {
     .forEach((o) => o.send(JSON.stringify(userState)));
 });
 
-const adress = process.env.PORT || 3000;
+const port = process.env.PORT || 3000;
 
 const bootstrap = async () => {
   try {
