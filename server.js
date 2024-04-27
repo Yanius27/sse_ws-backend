@@ -8,7 +8,9 @@ import bodyParser from "body-parser";
 import * as crypto from "crypto";
 
 const serverUrl = process.env.RENDER_EXTERNAL_URL;
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT;
+
+console.log(PORT);
 
 const app = express();
 
