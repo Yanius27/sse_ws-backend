@@ -26,7 +26,6 @@ app.use((req, res, next) => {
 const userState = [];
 
 app.post("/new-user", async (request, response) => {
-  console.log(request.body);
   if (Object.keys(request.body).length === 0) {
     const result = {
       status: "error",
@@ -87,7 +86,6 @@ wsServer.on("connection", (ws) => {
       [...wsServer.clients]
         .filter((o) => o.readyState === WebSocket.OPEN)
         .forEach((o) => o.send(JSON.stringify(userState)));
-        console.dir(userState);
       return;
     }
     if (receivedMSG.type === "send") {
